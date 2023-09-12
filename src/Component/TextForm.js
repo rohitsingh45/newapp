@@ -47,17 +47,39 @@ export default function TextForm(props) {
         setJsx(forHandler);
     }
 
+    const handleCopy = () => {
+        let text = document.getElementById('mybox');
+        text.select();
+        navigator.clipboard.writeText(text.value);
+    }
+
+    const handleExtraSpace = () => {
+        let newText = text.split(/[ ]+/);
+        setText(newText.join(" "))
+    }
+
+    const handlePaste = () => {
+        navigator.clipboard.readText()
+            .then(copiedText => {
+                let newText = text + copiedText;
+                setText(newText);
+            })
+    }
+
 
     return (
         <div>
             <div className="mb-3 container">
                 <label htmlFor="exampleFormControlTextarea1" className="form-label fw-bold">{props.textarea}</label>
-                <textarea className="form-control border-black" id="exampleFormControlTextarea1" rows="8" value={text} onChange={textareaChanged}></textarea>
+                <textarea className="form-control border-black" id="mybox" rows="8" value={text} onChange={textareaChanged}></textarea>
                 <button className='btn btn-primary my-2' onClick={upperCaseClicked}>Convert to upper case</button>
                 <button className="btn btn-success mx-3" onClick={lowerCaseClicked}>Convert to lower case</button>
                 <button className="btn btn-info mx-3" onClick={vowelConsCount}>Count V & C</button>
                 <button className="btn btn-danger" onClick={clearTextarea}>Clear</button>
                 <button className="btn btn-warning mx-3" onClick={jsxConverter}>Convert into JSX</button>
+                <button className="btn btn-primary" onClick={handleCopy}>Copy</button>
+                <button className="btn btn-secondary mx-3" onClick={handleExtraSpace}>Remove extra spaces</button>
+                <button className="btn btn-success" onClick={handlePaste}>Paste</button>
             </div>
 
             <div className='container fw-bold'>
