@@ -68,10 +68,10 @@ export default function TextForm(props) {
 
 
     return (
-        <div>
+        <div style={{color: props.mode==='dark'?'white':'black'}}>
             <div className="mb-3 container">
                 <label htmlFor="exampleFormControlTextarea1" className="form-label fw-bold">{props.textarea}</label>
-                <textarea className="form-control border-black" id="mybox" rows="8" value={text} onChange={textareaChanged}></textarea>
+                <textarea className="form-control border-black" style={{backgroundColor: props.mode === 'dark' ? 'grey' : 'white', color: props.mode==='dark'?'white':'black' }} id="mybox" rows="8" value={text} onChange={textareaChanged}></textarea>
                 <button className='btn btn-primary my-2' onClick={upperCaseClicked}>Convert to upper case</button>
                 <button className="btn btn-success mx-3" onClick={lowerCaseClicked}>Convert to lower case</button>
                 <button className="btn btn-info mx-3" onClick={vowelConsCount}>Count V & C</button>
