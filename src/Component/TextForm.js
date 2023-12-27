@@ -12,18 +12,24 @@ export default function TextForm(props) {
     const upperCaseClicked = () => {
         let newText = text.toUpperCase();
         setText(newText);
+
+        props.alertIntoTextArea("Converted into upper case", "success");
     }
 
     const lowerCaseClicked = () => {
         let newText = text.toLowerCase();
         setText(newText);
+
+        props.alertIntoTextArea("Converted into lower case", "success");
     }
 
     const clearTextarea = () => {
+        if (!(text.length > 0)) return;
         setText("");
         setVowelCount(0);
         setJsx("");
 
+        props.alertIntoTextArea("Text removed", "danger");
     }
 
 
@@ -45,17 +51,30 @@ export default function TextForm(props) {
         let forHandler = hrefHandler.replaceAll('for=', 'htmlFor=');
 
         setJsx(forHandler);
+
+        //Alert message and type...
+        // Since above JSX code handle only the three differeneces so for rest of them I want to show a warning alert along with message
+        // Otherwise show the success alert with message...
+        let result = text.includes('<input') || text.includes('<img') ? true : false
+        
+        props.alertIntoTextArea(result ? "Converted but check the closing tags":"Converted into JSX code",result ? "warning" : "success")
     }
 
     const handleCopy = () => {
         let text = document.getElementById('mybox');
         text.select();
         navigator.clipboard.writeText(text.value);
+
+        // Setting alert message and type....
+        props.alertIntoTextArea("Text Copied to Clipboard","success")
     }
 
     const handleExtraSpace = () => {
         let newText = text.split(/[ ]+/);
         setText(newText.join(" "))
+
+        // Setting alert message and type...
+        props.alertIntoTextArea("Extra spaces removed", "success");
     }
 
     const handlePaste = () => {
