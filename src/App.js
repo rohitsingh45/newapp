@@ -5,7 +5,7 @@ import TextForm from "./Component/TextForm";
 import Alert from "./Component/Alert";
 import About from "./Component/About";
 import React from 'react';
-import { BrowserRouter as Router, Route, Routes } from 'react-router-dom'
+// import { BrowserRouter as Router, Route, Routes } from 'react-router-dom'
 
 
 function App() {
@@ -44,15 +44,16 @@ function App() {
 
   return (
     <>
-      <Router>
+      {/* <Router> */}
       <Navbar navHead="Texter" mode={mode} toggleMode={toggleMode} />
       <Alert alert={alert} />
-        <Routes>
-          <Route exact path="/" element={<TextForm textarea="Enter your text here" mode={mode} alertIntoTextArea={showAlert} />
-}/>
-          <Route exact path="/about" element={<About/>}/>
-        </Routes>
-      </Router>
+        {/* <Routes> */}
+      {/* <Route exact path="/" element={ */}
+        <TextForm textarea="Enter your text here" mode={mode} alertIntoTextArea={showAlert} />
+{/* }/> */}
+          {/* <Route exact path="/about" element={<About/>}/> */}
+        {/* </Routes> */}
+      {/* </Router> */}
     
     </>
   );
