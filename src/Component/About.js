@@ -3,8 +3,8 @@ import React from 'react'
 
 export default function About(props) {
     let darkMode = {
-        color: props.mode === 'dark' ? 'white' : 'black',
-        backgroundColor:props.mode === 'dark'?'grey':'white'
+        color: props.mode === 'dark' ? 'white' : '#595454',
+        backgroundColor:props.mode === 'dark'?'#595454':'white'
     }
     return (
         <div className='mb-3 container'>

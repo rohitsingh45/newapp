@@ -103,7 +103,7 @@ export default function TextForm(props) {
     // Object for changing the dark mode.
     let darkMode = {
         color: props.mode === 'dark' ? 'white' : 'black',
-        backgroundColor: props.mode === 'dark' ? 'grey' : 'white'
+        backgroundColor: props.mode === 'dark' ? '#595454' : 'white'
 
     }
 
@@ -112,7 +112,7 @@ export default function TextForm(props) {
         <div style={darkMode}>
             <div className="mb-3 container">
                 <label htmlFor="exampleFormControlTextarea1" className="form-label fw-bold">{props.textarea}</label>
-                <textarea className={`form-control border border-${props.mode === 'dark'?'light':'dark'}`} style={darkMode} id="mybox" rows="8" value={text} onChange={textareaChanged}></textarea>
+                <textarea className={`form-control border my-2 border-${props.mode === 'dark'?'light':'dark'}`} style={darkMode} id="mybox" rows="8" value={text} onChange={textareaChanged}></textarea>
                 <button className='btn btn-primary mx-1 my-1' onClick={upperCaseClicked}>Convert to upper case</button>
                 <button className="btn btn-success mx-1 my-1" onClick={lowerCaseClicked}>Convert to lower case</button>
                 <button className="btn btn-info mx-1 my-1" onClick={vowelConsCount}>Count V & C</button>
@@ -124,8 +124,8 @@ export default function TextForm(props) {
             </div>
 
             <div className='container fw-bold'>
-                {  
-                    text.split(" ").filter((element) => {
+                {   // Regular expression in js. regEx
+                    text.split(/\s+/).filter((element) => {
                         return element.length !== 0
                    }).length } words and {text.length} characters
             </div>
