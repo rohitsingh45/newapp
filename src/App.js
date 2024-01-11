@@ -45,16 +45,16 @@ function App() {
   return (
     <>
       <Router>
-      <Navbar navHead="Texter" mode={mode} toggleMode={toggleMode} />
-      <Alert alert={alert} />
+        <Navbar navHead="Texter" mode={mode} toggleMode={toggleMode} />
+        <Alert alert={alert} />
         <Routes>
-      <Route exact path="/" element={
-      <TextForm textarea="Enter your text here" mode={mode} alertIntoTextArea={showAlert} />
-      }/> 
-          <Route exact path="/about" element={<About mode={mode} />}/>
+          <Route exact path="/" element={
+            <TextForm textarea="Enter your text here" mode={mode} alertIntoTextArea={showAlert} />
+          } />
+          <Route exact path="/about" element={<About mode={mode} />} />
         </Routes>
       </Router>
-    
+
     </>
   );
 }
